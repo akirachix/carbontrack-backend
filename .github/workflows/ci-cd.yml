@@ -4,42 +4,30 @@ on: [push, pull_request]
 
 jobs:
   ci:
+
     runs-on: ubuntu-latest
+
     
     steps:
-    - name: Check-out repository
-      uses: actions/checkout@v2
-
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    
-    - name: Cache Poetry installation
-      uses: actions/cache@v3
-      with:
-        path: ~/.local/share/pypoetry
-        key: poetry-1.5.1-cache
+
+    - name: Check-out repository
+      uses: actions/checkout@v2
 
     - name: Install poetry
       uses: snok/install-poetry@v1
       with:
         version: 1.5.1
 
-    - name: Configure Poetry virtualenv
-      run: |
-        poetry config virtualenvs.create true --local
-        poetry config virtualenvs.in-project true --local
-
-    - name: Cache Poetry dependencies
-      uses: actions/cache@v3
-      with:
-        path: .venv
-        key: poetry-venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-        restore-keys: poetry-venv-
+    - name: Verify Poetry installation
+      run: poetry --version    
 
     - name: Install package
-      run: poetry install --no-interaction
+      run: poetry install
+      
 
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
