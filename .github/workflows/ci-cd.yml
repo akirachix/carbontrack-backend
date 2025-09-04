@@ -21,7 +21,7 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: myproject.settings
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: sqlite:///:memory:
+        DATABASE_URL: sqlite:///:memory
       run: poetry run python manage.py test
   deploy:
     needs: test
