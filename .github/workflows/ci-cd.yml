@@ -2,59 +2,27 @@ name: ci-cd
 
 on:
   push:
+    branches:
+      - main
   pull_request:
-
+    branches:
+      - main
 jobs:
-  ci:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Check-out repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install python3-venv
-      run: |
-        sudo apt update
-        sudo apt install -y python3-venv
-
-    - name: Cache Poetry installation
-      uses: actions/cache@v3
-      with:
-        path: ~/.local/share/pypoetry
-        key: poetry-2.1.4-cache
-
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-    - name: Configure Poetry to create venv in-project
-      run: |
-        poetry config virtualenvs.create true --local
-        poetry config virtualenvs.in-project true --local
-
-    - name: Cache Poetry virtual environment
-      uses: actions/cache@v3
-      with:
-        path: .venv
-        key: poetry-venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-        restore-keys: poetry-venv-
-
-    - name: Install dependencies
-      run: poetry install --no-interaction
-
-    - name: Run tests with pytest
-      run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        files: ./coverage.xml
-
-    - name: Build documentation
-      run: poetry run make html --directory docs/
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 .
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest tests/
