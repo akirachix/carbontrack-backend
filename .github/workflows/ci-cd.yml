@@ -2,47 +2,54 @@ name: ci-cd
 
 on:
   push:
-    branches: [main, develop]
   pull_request:
-    branches: [main, develop]
+
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - name: Check-out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.8.10'
-    - name: Install Poetry
-      run: pip install poetry==1.8.3
-    - name: Install dependencies
-      run: poetry install --no-root
-    - name: Run tests
-      env:
-        DJANGO_SETTINGS_MODULE: myproject.settings
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: sqlite:///:memory
-      run: poetry run python manage.py test
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+        python-version: 3.8
+
+    - name: Cache Poetry installation
+      uses: actions/cache@v3
       with:
-        python-version: '3.8.10'
+        path: ~/.local/share/pypoetry
+        key: poetry-2.1.4-cache
+
     - name: Install Poetry
-      run: pip install poetry==1.8.3
-    - name: Install dependencies
-      run: poetry install --no-root
-    - name: Build static files
-      run: poetry run python manage.py collectstatic --noinput
-    - name: Deploy to Vercel
-      env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       run: |
-        npm install -g vercel
-        vercel --prod --token $VERCEL_TOKEN --project $VERCEL_PROJECT_ID --scope $VERCEL_ORG_ID
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Configure Poetry to create venv in-project
+      run: |
+        poetry config virtualenvs.create true --local
+        poetry config virtualenvs.in-project true --local
+
+    - name: Cache Poetry virtual environment
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: poetry-venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: poetry-venv-
+
+    - name: Install dependencies
+      run: poetry install --no-interaction
+
+    - name: Run tests with pytest
+      run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./coverage.xml
+
+    - name: Build documentation
+      run: poetry run make html --directory docs/
