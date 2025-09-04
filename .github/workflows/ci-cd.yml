@@ -1,4 +1,4 @@
-name: ci-cd
+name: Django CI
 
 on: [push, pull_request]
 
@@ -27,7 +27,7 @@ jobs:
 
     - name: Install package
       run: poetry install
-      working-directory: carbon_track
+      
 
     - name: Test with pytest
       run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
