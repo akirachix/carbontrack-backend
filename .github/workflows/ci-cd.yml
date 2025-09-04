@@ -1,48 +1,35 @@
 name: ci-cd
 
-on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+on: [push, pull_request]
+
 jobs:
-  test:
-    runs-on: ubuntu-22.04
+  ci:
+   
+    runs-on: ubuntu-latest
+
+   
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
-    - name: Install Poetry
-      run: pip install poetry==1.8.3
-    - name: Install dependencies
-      run: poetry install --no-root
-    - name: Run tests
-      env:
-        DJANGO_SETTINGS_MODULE: myproject.settings
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DATABASE_URL: sqlite:///:memory
-      run: poetry run python manage.py test
-  deploy:
-    needs: test
-    runs-on: ubuntu-22.04
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+        python-version: 3.8
+
+    - name: Check-out repository
+      uses: actions/checkout@v2
+
+    - name: Install poetry
+      uses: snok/install-poetry@v1
+
+    - name: Install package
+      run: poetry install
+
+    - name: Test with pytest
+      run: poetry run pytest tests/ --cov=pycounts --cov-report=xml
+
+    - name: Use Codecov to track coverage
+      uses: codecov/codecov-action@v2
       with:
-        python-version: '3.8'
-    - name: Install Poetry
-      run: pip install poetry==1.8.3
-    - name: Install dependencies
-      run: poetry install --no-root
-    - name: Build static files
-      run: poetry run python manage.py collectstatic --noinput
-    - name: Deploy to Vercel
-      env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      run: |
-        npm install -g vercel
-        vercel --prod --token $VERCEL_TOKEN --project $VERCEL_PROJECT_ID --scope $VERCEL_ORG_ID
+        files: ./coverage.xml  
+
+    - name: Build documentation
+      run: poetry run make html --directory docs/
