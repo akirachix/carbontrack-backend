@@ -7,9 +7,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    defaults:
-        run:
-        working-directory: /home/student/carbontrack-backend-1
     strategy:
       matrix:
         python-version: [3.8]  
