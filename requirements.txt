@@ -4,4 +4,4 @@ django==4.2.24
 sqlparse==0.5.3
 typing-extensions==4.13.2
 black==24.8.0
-pillow==11.3.0
+pillow==10.4.0
