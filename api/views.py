@@ -1,6 +1,7 @@
 from django.shortcuts import render
-
 from rest_framework import viewsets
+from emissions.models import Emissions
+from .serializers import EmissionsSerializer
 from factory.models import Factory
 from factory.models import MCU
 from .serializers import FactorySerializer
@@ -11,6 +12,12 @@ from api.serializers import  EnergyEntrySerializer
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+
+class EmissionsViewSet(viewsets.ModelViewSet):
+    queryset = Emissions.objects.all().order_by('-updated_at') 
+    serializer_class = EmissionsSerializer
+
+
 
 
 class FactoryViewSet(viewsets.ModelViewSet):

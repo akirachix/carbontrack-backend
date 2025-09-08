@@ -10,7 +10,7 @@ class Emissions(models.Model):
     emissions_id = models.AutoField(primary_key=True)
     device_id = models.CharField(max_length=255, null=True, blank=True)
     mcu = models.ForeignKey(MCU, on_delete=models.CASCADE, related_name='emissions' , null=True)
-    emission_rate = models.DecimalField(max_digits=15, decimal_places=15)
+    emission_rate = models.DecimalField(max_digits=30, decimal_places=15)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
