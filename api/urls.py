@@ -27,3 +27,14 @@ urlpatterns = [
 
 
 
+from rest_framework.routers import DefaultRouter
+from api.views import ComplianceViewSet
+
+
+router = DefaultRouter()
+router.register(r'compliance', ComplianceViewSet)
+
+
+urlpatterns=[
+    path('api/', include(router.urls)),
+]

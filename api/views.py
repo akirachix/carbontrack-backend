@@ -44,3 +44,21 @@ class EnergyEntryViewSet(viewsets.ModelViewSet):
         return Response({'factory_id': factory_id, 'date': date, 'co2_sum': co2, 'tea_processed_sum': tea_processed})
     
 
+from .serializers import ComplianceSerializer
+from rest_framework import viewsets
+from emissions.models import Compliance
+from django.utils import timezone
+from rest_framework.decorators import action
+
+class ComplianceViewSet(viewsets.ModelViewSet):
+    queryset = Compliance.objects.all()
+    serializer_class = ComplianceSerializer
+
+    @action(detail=True, methods=['post'])
+    def update_status(self, request, pk=None):
+        compliance = self.get_object()
+        date_str = request.data.get('date')
+        date = parse_date(date_str) if date_str else timezone.now().date()
+        compliance.update_compliance(date)
+        serializer = self.get_serializer(compliance)
+        return Response(serializer.data)

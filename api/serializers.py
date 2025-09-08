@@ -58,3 +58,9 @@ class EnergyEntrySerializer(serializers.ModelSerializer):
             data['energy_amount'] = f"{amount} {unit}"
         return data
 
+from emissions.models import Compliance  
+
+class ComplianceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Compliance
+        fields = '__all__'
