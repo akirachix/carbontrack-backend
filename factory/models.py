@@ -5,7 +5,7 @@ from decimal import Decimal
 
 class Factory(models.Model):
     factory_id = models.AutoField(primary_key=True)
-    factory_name = models.CharField(max_length=40)
+    factory_name = models.CharField(max_length=40,unique=True)
     factory_location = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
