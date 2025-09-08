@@ -1,6 +1,8 @@
 from rest_framework import serializers
+
 from factory.models import Factory
 from factory.models import MCU
+from factory.models import EnergyEntry
 
 
 class FactorySerializer(serializers.ModelSerializer):
@@ -12,7 +14,8 @@ class MCUSerializer(serializers.ModelSerializer):
     class Meta:
         model = MCU
         fields = '__all__'
-from factory.models import EnergyEntry
+
+
 
 class EnergyEntrySerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,3 +30,4 @@ class EnergyEntrySerializer(serializers.ModelSerializer):
         if amount is not None:
             data['energy_amount'] = f"{amount} {unit}"
         return data
+
