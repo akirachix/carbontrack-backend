@@ -7,7 +7,6 @@ from factory.models import EnergyEntry
 
 
 
-
 class EmissionsSerializer(serializers.ModelSerializer):
     device_id = serializers.CharField(write_only=True)  
     mcu = serializers.SerializerMethodField()            
