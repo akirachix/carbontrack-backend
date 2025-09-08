@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'factory',
     'emissions',
     'api',
-    'rest_framework',
     'users',
 
 ]
