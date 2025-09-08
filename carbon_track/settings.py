@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'factory',
     'emissions',
     'rest_framework',
+    'api',
+    'rest_framework',
+    'users',
+
 ]
 
 MIDDLEWARE = [

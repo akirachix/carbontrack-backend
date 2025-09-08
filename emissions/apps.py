@@ -54,9 +54,6 @@ def on_message(client, userdata, msg):
     except Exception as e:
         return(f"\nError decoding message on topic {msg.topic}: {e}")
 
-
-
-
 class MqttThread(threading.Thread):
     def run(self):
         client = mqtt.Client()
