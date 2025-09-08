@@ -1,25 +1,6 @@
 asgiref==3.8.1
-black==24.8.0
-pillow==10.4.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-django==4.2.24
-djangorestframework==3.15.2
-pillow==10.4.0
-
-=======
-=======
-django==4.2.24
-djangorestframework==3.15.2
-pillow==10.4.0
->>>>>>> d3dd975e0c47be04d4c2744ed047c8efd0e097a7
 backports-zoneinfo==0.2.1
 django==4.2.24
-djangorestframework==3.15.2
 sqlparse==0.5.3
 typing-extensions==4.13.2
-<<<<<<< HEAD
->>>>>>> f087b82f92d293dfb03026a7c95d51a2cdad0c39
-=======
-
->>>>>>> d3dd975e0c47be04d4c2744ed047c8efd0e097a7
+black==24.8.0
