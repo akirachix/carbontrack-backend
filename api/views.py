@@ -1,11 +1,27 @@
 from django.shortcuts import render
+
+from rest_framework import viewsets
+from factory.models import Factory
+from factory.models import MCU
+from .serializers import FactorySerializer
+from .serializers import MCUSerializer
+from django.shortcuts import render
 from factory.models import EnergyEntry
 from api.serializers import  EnergyEntrySerializer
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-# Create your views here.
+
+class FactoryViewSet(viewsets.ModelViewSet):
+    queryset = Factory.objects.all()
+    serializer_class = FactorySerializer
+
+class MCUViewSet(viewsets.ModelViewSet):
+    queryset = MCU.objects.all()
+    serializer_class = MCUSerializer
+
+
 
 
 class EnergyEntryViewSet(viewsets.ModelViewSet):
@@ -20,3 +36,4 @@ class EnergyEntryViewSet(viewsets.ModelViewSet):
         tea_processed = EnergyEntry.get_tea_processed_sum_by_factory_and_date(factory_id, date)
         return Response({'factory_id': factory_id, 'date': date, 'co2_sum': co2, 'tea_processed_sum': tea_processed})
     
+
