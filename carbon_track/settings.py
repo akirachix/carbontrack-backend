@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'factory',
     'emissions',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
