@@ -1,24 +1,16 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from emissions.models import Emissions
-from .serializers import EmissionsSerializer
-from factory.models import Factory
-from factory.models import MCU
-from .serializers import FactorySerializer
-from .serializers import MCUSerializer
-from django.shortcuts import render
-from factory.models import EnergyEntry
-from api.serializers import  EnergyEntrySerializer
-from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.utils import timezone
+from emissions.models import Emissions, Compliance
+from .serializers import EmissionsSerializer, FactorySerializer, MCUSerializer, ComplianceSerializer
+from api.serializers import  EnergyEntrySerializer
+from factory.models import Factory, MCU, EnergyEntry
 
 class EmissionsViewSet(viewsets.ModelViewSet):
     queryset = Emissions.objects.all().order_by('-updated_at') 
     serializer_class = EmissionsSerializer
-
-
-
 
 class FactoryViewSet(viewsets.ModelViewSet):
     queryset = Factory.objects.all()
@@ -27,9 +19,6 @@ class FactoryViewSet(viewsets.ModelViewSet):
 class MCUViewSet(viewsets.ModelViewSet):
     queryset = MCU.objects.all()
     serializer_class = MCUSerializer
-
-
-
 
 class EnergyEntryViewSet(viewsets.ModelViewSet):
     queryset = EnergyEntry.objects.all()
@@ -44,3 +33,15 @@ class EnergyEntryViewSet(viewsets.ModelViewSet):
         return Response({'factory_id': factory_id, 'date': date, 'co2_sum': co2, 'tea_processed_sum': tea_processed})
     
 
+class ComplianceViewSet(viewsets.ModelViewSet):
+    queryset = Compliance.objects.all()
+    serializer_class = ComplianceSerializer
+
+    @action(detail=True, methods=['post'])
+    def update_status(self, request, pk=None):
+        compliance = self.get_object()
+        date_str = request.data.get('date')
+        date = parse_date(date_str) if date_str else timezone.now().date()
+        compliance.update_compliance(date)
+        serializer = self.get_serializer(compliance)
+        return Response(serializer.data)

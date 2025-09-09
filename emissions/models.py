@@ -4,8 +4,6 @@ from factory.models import MCU
 from factory.models import Factory, EnergyEntry
 from django.utils import timezone
 
-
-
 class Emissions(models.Model):
     emissions_id = models.AutoField(primary_key=True)
     device_id = models.CharField(max_length=255, null=True, blank=True)
@@ -23,7 +21,6 @@ class Emissions(models.Model):
             updated_at__date=date
         ).aggregate(total_emission=Sum('emission_rate'))
         return emissions['total_emission'] or 0 
-
 
 class Compliance(models.Model):
     compliance_id = models.AutoField(primary_key=True)
@@ -51,3 +48,6 @@ class Compliance(models.Model):
     def save(self, *args, **kwargs):
         self.compliance_status = self.calculate_compliance_status()
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Compliance for {self.factory.factory_name}"
