@@ -11,7 +11,7 @@ class UserModelTest(TestCase):
     def test_create_manager(self):
         user = User.objects.create_user(
             email="girmaayemebet@gmail.com",
-            password="gideye506",
+            password="gideye506#",
             first_name="Emebet",
             last_name="Girmay",
             phone_number="+251923232323",
