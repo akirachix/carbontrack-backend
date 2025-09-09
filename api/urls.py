@@ -7,7 +7,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.routers import DefaultRouter
 from .views import FactoryViewSet, MCUViewSet
 from .views import EnergyEntryViewSet
-
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 
 router = DefaultRouter()
@@ -21,6 +21,10 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/factories/',FactoryViewSet.as_view, name='factory-api'),
     path('api/mcus/',FactoryViewSet.as_view, name='factory-api'),
+
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 
     ]
 

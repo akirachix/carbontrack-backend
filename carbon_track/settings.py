@@ -46,8 +46,13 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'users',
+    'drf_spectacular',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,3 +144,17 @@ PASSWORD = os.getenv('PASSWORD')
 TOPIC = os.getenv('TOPIC')
 API_URL = os.getenv('API_URL')
 AUTH_USER_MODEL = "users.User"
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'CarbonTrack API',
+    'DESCRIPTION': 'API documentation for the CarbonTrack project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'displayOperationId': True,
+        'defaultModelsExpandDepth': 1,
+        'defaultModelExpandDepth': 1,
+    },
+}
