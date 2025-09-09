@@ -125,12 +125,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 
-from datetime import timedelta
 
-SIMPLE_JWT ={
-    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(0)
-}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -145,4 +140,3 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'carbontrack2025@gmail.com'
 EMAIL_HOST_PASSWORD = 'hkuujmbebchjucum'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-PASSWORD_RESET_TIMEOUT = 86400
