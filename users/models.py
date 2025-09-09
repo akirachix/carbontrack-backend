@@ -19,6 +19,10 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser must have is_staff=True.")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser must have is_superuser=True.")
         extra_fields.setdefault("user_type", "manager")
         return self.create_user(email, password, **extra_fields)
 class User(AbstractBaseUser, PermissionsMixin):
@@ -27,9 +31,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         ("factory", "Factory Manager"),
     )
     factory= models.ForeignKey("factory.Factory", on_delete=models.CASCADE, blank=True, null=True)
-    first_name = models.CharField(max_length=40, blank=True, null=True)
-    last_name = models.CharField(max_length=40, blank=True, null=True)
-    phone_number = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    first_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40)
     email = models.EmailField(unique=True)
     phone_regex = RegexValidator(
     regex=r'^\+?1?\d{9,15}$',
@@ -45,7 +48,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_type = models.CharField(max_length=20, choices=USER_TYPES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    profile_image= models.ImageField(upload_to="profiles/", blank=True, null=True)
     profile_image = models.ImageField(
     upload_to="profiles/",
     blank=True,
@@ -56,11 +58,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     objects = UserManager()
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def clean(self):
         if self.user_type == "factory" and not self.factory:
             raise ValidationError("Factory is required for factory managers.")
+        if self.user_type == "manager" and self.factory:
+            raise ValidationError("KTDA Managers should not be linked to a factory")
             
 
     def __str__(self):
