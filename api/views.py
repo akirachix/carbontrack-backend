@@ -1,24 +1,16 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from emissions.models import Emissions
-from .serializers import EmissionsSerializer
-from factory.models import Factory
-from factory.models import MCU
-from .serializers import FactorySerializer
-from .serializers import MCUSerializer
-from django.shortcuts import render
-from factory.models import EnergyEntry
-from api.serializers import  EnergyEntrySerializer
-from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.utils import timezone
+from emissions.models import Emissions, Compliance
+from .serializers import EmissionsSerializer, FactorySerializer, MCUSerializer, ComplianceSerializer
+from api.serializers import  EnergyEntrySerializer
+from factory.models import Factory, MCU, EnergyEntry
 
 class EmissionsViewSet(viewsets.ModelViewSet):
     queryset = Emissions.objects.all().order_by('-updated_at') 
     serializer_class = EmissionsSerializer
-
-
-
 
 class FactoryViewSet(viewsets.ModelViewSet):
     queryset = Factory.objects.all()
@@ -27,9 +19,6 @@ class FactoryViewSet(viewsets.ModelViewSet):
 class MCUViewSet(viewsets.ModelViewSet):
     queryset = MCU.objects.all()
     serializer_class = MCUSerializer
-
-
-
 
 class EnergyEntryViewSet(viewsets.ModelViewSet):
     queryset = EnergyEntry.objects.all()
@@ -43,12 +32,6 @@ class EnergyEntryViewSet(viewsets.ModelViewSet):
         tea_processed = EnergyEntry.get_tea_processed_sum_by_factory_and_date(factory_id, date)
         return Response({'factory_id': factory_id, 'date': date, 'co2_sum': co2, 'tea_processed_sum': tea_processed})
     
-
-from .serializers import ComplianceSerializer
-from rest_framework import viewsets
-from emissions.models import Compliance
-from django.utils import timezone
-from rest_framework.decorators import action
 
 class ComplianceViewSet(viewsets.ModelViewSet):
     queryset = Compliance.objects.all()

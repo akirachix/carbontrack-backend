@@ -1,16 +1,12 @@
+from unittest.mock import patch
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from factory.models import MCU, Factory
-from emissions.models import Emissions
+from emissions.models import Emissions, Compliance
+from factory.models import EnergyEntry, Factory, MCU
 from django.test import TestCase
-from factory.models import Factory
-from factory.models import MCU
 from decimal import Decimal
 from datetime import datetime, timedelta
-from factory.models import EnergyEntry, Factory
-from factory.models import Factory
-from factory.models import MCU
 
 class EmissionsAPITestCase(APITestCase):
     def setUp(self):
@@ -169,10 +165,6 @@ class EnergyEntryCRUDTests(TestCase):
         expected_sum = self.energy_entry1.tea_processed_amount + self.energy_entry2.tea_processed_amount
         actual_sum = EnergyEntry.get_tea_processed_sum_by_factory_and_date(self.factory.pk, target_date)
         self.assertEqual(actual_sum, expected_sum)
-from emissions.models import Compliance
-from decimal import Decimal
-from unittest.mock import patch
-
 
 class ComplianceModelCRUDTests(TestCase):
 

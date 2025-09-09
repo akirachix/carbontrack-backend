@@ -1,11 +1,6 @@
 from rest_framework import serializers
-from emissions.models import Emissions
-from factory.models import MCU
-from factory.models import Factory
-from factory.models import MCU
-from factory.models import EnergyEntry
-
-
+from emissions.models import Emissions, Compliance
+from factory.models import MCU, Factory, EnergyEntry
 
 class EmissionsSerializer(serializers.ModelSerializer):
     device_id = serializers.CharField(write_only=True)  
@@ -58,7 +53,6 @@ class EnergyEntrySerializer(serializers.ModelSerializer):
             data['energy_amount'] = f"{amount} {unit}"
         return data
 
-from emissions.models import Compliance  
 
 class ComplianceSerializer(serializers.ModelSerializer):
     class Meta:
