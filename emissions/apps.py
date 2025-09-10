@@ -58,7 +58,8 @@ class MqttThread(threading.Thread):
         client = mqtt.Client()
         client.on_connect = on_connect
         client.on_message = on_message
-        client.tls_set(tls_version=ssl.PROTOCOL_TLS)
+        cert_path = os.path.join(os.path.dirname(__file__), 'isrgrootx1.pem')
+        client.tls_set(ca_certs=cert_path, tls_version=ssl.PROTOCOL_TLS)
         client.username_pw_set(USERNAME, PASSWORD)
         client.connect(BROKER, PORT, keepalive=120)
         client.loop_start()  
