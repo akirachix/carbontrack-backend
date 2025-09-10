@@ -60,7 +60,7 @@ class MqttThread(threading.Thread):
         client.on_message = on_message
         client.tls_set(tls_version=ssl.PROTOCOL_TLS)
         client.username_pw_set(USERNAME, PASSWORD)
-        client.connect(BROKER, PORT, keepalive=60)
+        client.connect(BROKER, PORT, keepalive=120)
         client.loop_start()  
         while True:
             time.sleep(1)
