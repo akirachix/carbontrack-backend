@@ -139,7 +139,6 @@ API_URL = os.getenv('API_URL')
 AUTH_USER_MODEL = "users.User"
 
 
-
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))

@@ -15,6 +15,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+      - name: Login to Heroku
+        run: heroku container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      - name: Set up Git remote for Heroku
+        run: |
+          git remote -v
+          git remote add heroku https://git.heroku.com/carbontrack-backend.git || echo "Heroku remote already exists"
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.13.15
         with:
