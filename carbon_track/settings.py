@@ -20,9 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-insecure-key-for-dev-only')
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
