@@ -1,16 +1,12 @@
+from unittest.mock import patch
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from factory.models import MCU, Factory
-from emissions.models import Emissions
+from emissions.models import Emissions, Compliance
+from factory.models import EnergyEntry, Factory, MCU
 from django.test import TestCase
-from factory.models import Factory
-from factory.models import MCU
 from decimal import Decimal
 from datetime import datetime, timedelta
-from factory.models import EnergyEntry, Factory
-from factory.models import Factory
-from factory.models import MCU
 
 class EmissionsAPITestCase(APITestCase):
     def setUp(self):
@@ -169,3 +165,67 @@ class EnergyEntryCRUDTests(TestCase):
         expected_sum = self.energy_entry1.tea_processed_amount + self.energy_entry2.tea_processed_amount
         actual_sum = EnergyEntry.get_tea_processed_sum_by_factory_and_date(self.factory.pk, target_date)
         self.assertEqual(actual_sum, expected_sum)
+
+class ComplianceModelCRUDTests(TestCase):
+
+    def setUp(self):
+        self.factory1 = Factory.objects.create(
+            factory_id=1,
+            factory_name="Kericho Tea Factory",
+            factory_location="Kericho"
+        )
+        self.factory2 = Factory.objects.create(
+            factory_id=2,
+            factory_name="Nandi Hills Tea Factory",
+            factory_location="Nandi Hills"
+        )
+        self.compliance = Compliance.objects.create(
+            factory=self.factory1,
+            compliance_target=Decimal('1.0000')
+        )
+
+    def test_create_compliance(self):
+        compliance2 = Compliance.objects.create(
+            factory=self.factory2,
+            compliance_target=Decimal('2.5000')
+        )
+        self.assertIsInstance(compliance2, Compliance)
+        self.assertEqual(compliance2.factory.factory_id, self.factory2.factory_id)
+        self.assertEqual(compliance2.compliance_target, Decimal('2.5000'))
+
+    def test_read_compliance(self):
+        compliance = Compliance.objects.get(pk=self.compliance.pk)
+        self.assertEqual(compliance.compliance_id, self.compliance.compliance_id)
+        self.assertEqual(compliance.factory.factory_name, "Kericho Tea Factory")
+
+    def test_update_compliance(self):
+        new_target = Decimal('0.7500')
+        self.compliance.compliance_target = new_target
+        self.compliance.save()
+        updated = Compliance.objects.get(pk=self.compliance.pk)
+        self.assertEqual(updated.compliance_target, new_target)
+
+    def test_delete_compliance(self):
+        compliance_id = self.compliance.pk
+        self.compliance.delete()
+        with self.assertRaises(Compliance.DoesNotExist):
+            Compliance.objects.get(pk=compliance_id)
+
+    def test_compliance_status_field_not_editable(self):
+        field = Compliance._meta.get_field('compliance_status')
+        self.assertFalse(field.editable)
+
+    def test_compliance_status_calculation_on_save(self):
+        with patch('factory.models.EnergyEntry.get_tea_processed_sum_by_factory_and_date', return_value=Decimal('100')), \
+             patch('factory.models.EnergyEntry.get_co2_sum_by_factory_and_date', return_value=Decimal('1')), \
+             patch('emissions.models.Emissions.get_emission_sum_by_factory_and_date', return_value=Decimal('1')):
+
+            self.compliance.compliance_target = Decimal('5')
+            self.compliance.save()
+            self.compliance.refresh_from_db()
+            self.assertEqual(self.compliance.compliance_status, 'compliant')
+
+            self.compliance.compliance_target = Decimal('1')
+            self.compliance.save()
+            self.compliance.refresh_from_db()
+            self.assertEqual(self.compliance.compliance_status, 'non-compliant')

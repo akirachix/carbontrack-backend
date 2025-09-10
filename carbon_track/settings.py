@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
     'factory',
     'emissions',
     'api',
-    'rest_framework',
     'users',
     'drf_spectacular',
 
@@ -135,6 +136,9 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 BROKER = os.getenv('BROKER')
@@ -145,16 +149,12 @@ TOPIC = os.getenv('TOPIC')
 API_URL = os.getenv('API_URL')
 AUTH_USER_MODEL = "users.User"
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-SPECTACULAR_SETTINGS = {
-    'TITLE': 'CarbonTrack API',
-    'DESCRIPTION': 'API documentation for the CarbonTrack project',
-    'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': True,
-    'SWAGGER_UI_SETTINGS': {
-        'deepLinking': True,
-        'displayOperationId': True,
-        'defaultModelsExpandDepth': 1,
-        'defaultModelExpandDepth': 1,
-    },
-}
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'carbontrack2025@gmail.com'
+EMAIL_HOST_PASSWORD = 'hkuujmbebchjucum'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
