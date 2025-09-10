@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 
-
 BROKER = os.getenv('BROKER')
 PORT = int(os.getenv('PORT', '8883')) 
 USERNAME = os.getenv('USERNAME')
