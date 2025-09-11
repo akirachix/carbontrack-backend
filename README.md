@@ -82,7 +82,7 @@ cd carbontrack <br>
  Start the development server: <br>
  ```sh
   python manage.py runserver <br>
-``
+```
 
 ---
 <h3>
