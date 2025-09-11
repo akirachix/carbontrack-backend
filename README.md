@@ -1,17 +1,20 @@
 
-<h1 >
+<h1>
   Carbon Track
 </h1>
 
 
 ---
+<h3>
 Overview<br>
+</h3>
 <br>
 Carbon Track is system that leverages IoT sensors to continuously collect emissions and energy usage data across multiple factory. The project features a Django REST Framework backend API with endpoints for user energy entry, emissions, compliance, factory, and MCU devices. Interactive API documentation is provided via Swagger and Redoc.
 
 ---
 
 **Features**<br>
+
 *User registration, login, and authentication <br>
 *CRUD operations on energy entry, emissions, compliance, factory, and MCU devices <br>
 *API documentation with Swagger UI and Redoc <br>
@@ -84,25 +87,26 @@ Modify authentication and permission settings in settings.py according to your n
 ---
 
 About <br>
---No description, website, or topics provided. <br>
---Resources<br>
---Readme<br>
---Activity <br>
---Custom properties <br>
---Stars <br>
---0 stars <br>
---Watchers <br>
---0 watching <br>
---Forks <br>
---0 forks <br>
---Releases <br>
---No releases published <br>
---Create a new release <br>
---Packages <br>
---No packages published <br>
---Publish your first package <br>
---Contributors <br>
---6
+-No description, website, or topics provided. <br>
+-Resources<br>
+-Readme<br>
+-Activity <br>
+-Custom properties <br>
+-Stars <br>
+-0 stars <br>
+-Watchers <br>
+-0 watching <br>
+-Forks <br>
+-0 forks <br>
+-Releases <br>
+-No releases published <br>
+-Create a new release <br>
+-Packages <br>
+-No packages published <br>
+-Publish your first package <br>
+
+**Contributors** <br>
+ 6
 
 ---
 
@@ -110,8 +114,10 @@ About <br>
 Python <br>
 99.7% <br>
 
-Procfile<br> 
-0.3%
+Procfile <br>
+0.3% <br>
+
+
 ---
 
 <p align="center">
