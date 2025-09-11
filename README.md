@@ -1,5 +1,5 @@
 
-###Carbon Track 
+##Carbon Track 
 Overview
 Carbon Track is system that leverages IoT sensors to continuously collect emissions and energy usage data across multiple factory. The project features a Django REST Framework backend API with endpoints for user energy entry, emissions, compliance, factory, and MCU devices. Interactive API documentation is provided via Swagger and Redoc.
 
