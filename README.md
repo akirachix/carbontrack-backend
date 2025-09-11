@@ -1,4 +1,9 @@
+
+<p align="center">
 **Carbon Track**<br>
+</p>
+
+
 ---
 Overview<br>
 <br>
@@ -16,6 +21,7 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 ---
 
 **Technology Stack** <br>
+<lu>
 -Python 3.13+ <br>
 -Django 4.2+ <br>
 -Django REST Framework <br>
@@ -105,7 +111,7 @@ Python <br>
 99.7% <br>
 
 Procfile<br> 
-0.3% <br>
+0.3%
 ---
 
 <p align="center">
