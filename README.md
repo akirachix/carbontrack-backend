@@ -19,22 +19,21 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 *   API documentation with Swagger UI and Redoc <br>
 *   Modular architecture for easy extension and maintenance <br>
 *   Secure endpoints with configurable authentication and permissions <br>
-
 ---
 <h3>
  Technology Stack 
 </h3>
-*   Django 4.2+ <br>
-*   Django REST Framework <br>
-*   drf-yasg (Swagger / Redoc API docs) <br>
-*   PostgreSQL <br>
-*   Token authentication <br>
-*   Getting Started <br>
-*   Prerequisites <br>
-*   Python 3.13 or higher <br>
-*   pip package manager <br>
-*   Virtual environment tool <br>
-*   Database <br>
+*  Django 4.2+ <br>
+*  Django REST Framework <br>
+*  drf-yasg (Swagger / Redoc API docs) <br>
+*  PostgreSQL <br>
+*  Token authentication <br>
+*  Getting Started <br>
+*  Prerequisites <br>
+*  Python 3.13 or higher <br>
+*  pip package manager <br>
+*  Virtual environment tool <br>
+*  Database <br>
 ---
 <h3>
  Installation<br>
@@ -49,12 +48,12 @@ cd carbontrack <br>
 <h3>
   Create and activate a virtual environment: <br>
 </h3>
--Linux/macOS: <br>
--python -m venv venv <br>
--source venv/bin/activate <br>
--Windows: <br>
--python -m venv venv <br>
--venv\Scripts\activate <br>
+*  Linux/macOS: <br>
+*  python -m venv venv <br>
+*  source venv/bin/activate <br>
+*  Windows: <br>
+*  python -m venv venv <br>
+*  venv\Scripts\activate <br>
 
 ---
 <h3>
