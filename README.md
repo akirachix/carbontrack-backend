@@ -42,9 +42,9 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 </h3>
 Clone this repository: <br>
 ```sh
-git clone https://github.com/akirachix/carbontrack-backend.git <br>
-cd carbontrack <br>
+  git clone https://github.com/akirachix/carbontrack-backend.git <br>
 ```
+cd carbontrack <br>
 ---
 <h3>
   Create and activate a virtual environment: <br>
