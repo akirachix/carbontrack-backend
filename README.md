@@ -87,6 +87,7 @@ Postman Documentation: [link](https://documenter.getpostman.com/view/45609889/2s
 <h3>
   Usage <br>
 </h3>
+
 Access API root at [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/) to explore available endpoints.
 Use /register/, /login/, and other API endpoints for user authentication and resource management.
 Modify authentication and permission settings in settings.py according to your needs.
