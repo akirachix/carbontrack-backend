@@ -78,9 +78,10 @@ cd carbontrack <br>
 <h3>
   API Documentation<br>
 </h3>
-Swagger UI:[Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/swagger-ui/) <br>
+
+Swagger UI: [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/swagger-ui/) <br>
 Redoc: [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/redoc/) <br>
-Postman Documentation: [Link](https://documenter.getpostman.com/view/45609889/2sB3HooJrj)
+Postman Documentation: [link](https://documenter.getpostman.com/view/45609889/2sB3HooJrj)
 
 ---
 <h3>
