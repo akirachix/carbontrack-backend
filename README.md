@@ -1,7 +1,7 @@
 
-<p align="center">
-**Carbon Track**<br>
-</p>
+<h1 align="center">
+  Carbon Track
+</h1>
 
 
 ---
