@@ -61,16 +61,10 @@ class ComplianceViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(compliance)
         return Response(serializer.data)
 
-
-
-
-
-
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
 
 class SignupView(generics.CreateAPIView):
