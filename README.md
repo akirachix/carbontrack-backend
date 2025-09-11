@@ -40,6 +40,7 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
  Installation<br>
 </h3>
 Clone this repository: <br>
+
 ```sh
   git clone https://github.com/akirachix/carbontrack-backend.git <br>
 ```
@@ -59,12 +60,14 @@ cd carbontrack <br>
 <h3>
   Install dependencies <br>
 </h3>
+
 ```sh
  uv pip install -r requirements.txt <br>
  ```
  Set environment variables and update settings.py <br>
 -Configure your database, secret keys, and static/media paths <br>
 -Run database migrations: <br>
+
 ```sh
 -python manage.py migrate <br>
 ```
