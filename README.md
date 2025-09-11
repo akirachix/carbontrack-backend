@@ -23,11 +23,12 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 <h3>
  Technology Stack 
 </h3>
-*   Django 4.2+ <br>
-*   Django REST Framework <br>
-*   drf-yasg (Swagger / Redoc API docs) <br>
-*   PostgreSQL <br>
-*   Token authentication <br>
+
+*  Django 4.2+ <br>
+*  Django REST Framework <br>
+*  drf-yasg (Swagger / Redoc API docs) <br>
+*  PostgreSQL <br>
+*  Token authentication <br>
 *  Getting Started <br>
 *  Prerequisites <br>
 *  Python 3.13 or higher <br>
@@ -41,7 +42,7 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 Clone this repository: <br>
 
 ```sh
-  git clone https://github.com/akirachix/carbontrack-backend.git <br>
+  git clone https://github.com/akirachix/carbontrack-backend.git 
 ```
 cd carbontrack <br>
 ---
@@ -61,14 +62,14 @@ cd carbontrack <br>
 </h3>
 
 ```sh
- uv pip install -r requirements.txt <br>
+ uv pip install -r requirements.txt 
  ```
  Set environment variables and update settings.py <br>
 -Configure your database, secret keys, and static/media paths <br>
 -Run database migrations: <br>
 
 ```sh
--python manage.py migrate <br>
+-python manage.py migrate 
 ```
  Create a superuser for admin access: <br>
  ```sh
@@ -76,11 +77,11 @@ cd carbontrack <br>
  ```
 -Collect static files: <br>
 ```sh
- python manage.py collectstatic <br>
+ python manage.py collectstatic 
  ```
  Start the development server: <br>
  ```sh
-  python manage.py runserver <br>
+  python manage.py runserver 
 ```
 
 ---
