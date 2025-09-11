@@ -23,11 +23,11 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 <h3>
  Technology Stack 
 </h3>
-*  Django 4.2+ <br>
-*  Django REST Framework <br>
-*  drf-yasg (Swagger / Redoc API docs) <br>
-*  PostgreSQL <br>
-*  Token authentication <br>
+*   Django 4.2+ <br>
+*   Django REST Framework <br>
+*   drf-yasg (Swagger / Redoc API docs) <br>
+*   PostgreSQL <br>
+*   Token authentication <br>
 *  Getting Started <br>
 *  Prerequisites <br>
 *  Python 3.13 or higher <br>
