@@ -1,5 +1,5 @@
 
-<h1 align="center">
+<h1 >
   Carbon Track
 </h1>
 
