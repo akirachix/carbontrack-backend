@@ -111,7 +111,6 @@ Modify authentication and permission settings in settings.py according to your n
 </h3>
 Python <br>
 99.7% <br>
-
 Procfile <br>
 0.3% <br>
 ---
