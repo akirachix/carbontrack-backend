@@ -35,7 +35,6 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 *   pip package manager <br>
 *   Virtual environment tool <br>
 *   Database <br>
-
 ---
 <h3>
  Installation<br>
