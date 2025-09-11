@@ -24,26 +24,27 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 <h3>
  Technology Stack 
 </h3>
-*   Django 4.2+ 
-*   Django REST Framework 
-*   drf-yasg (Swagger / Redoc API docs) 
-*   PostgreSQL 
-*   Token authentication 
-*   Getting Started 
-*   Prerequisites 
-*   Python 3.13 or higher 
-*   pip package manager 
-*   Virtual environment tool 
-*   Database 
+*   Django 4.2+ <br>
+*   Django REST Framework <br>
+*   drf-yasg (Swagger / Redoc API docs) <br>
+*   PostgreSQL <br>
+*   Token authentication <br>
+*   Getting Started <br>
+*   Prerequisites <br>
+*   Python 3.13 or higher <br>
+*   pip package manager <br>
+*   Virtual environment tool <br>
+*   Database <br>
 
 ---
 <h3>
  Installation<br>
 </h3>
 Clone this repository: <br>
+```sh
 git clone https://github.com/akirachix/carbontrack-backend.git <br>
 cd carbontrack <br>
-
+```
 ---
 <h3>
   Create and activate a virtual environment: <br>
@@ -59,17 +60,27 @@ cd carbontrack <br>
 <h3>
   Install dependencies <br>
 </h3>
--uv pip install -r requirements.txt <br>
--Set environment variables and update settings.py <br>
+```sh
+ uv pip install -r requirements.txt <br>
+ ```
+ Set environment variables and update settings.py <br>
 -Configure your database, secret keys, and static/media paths <br>
 -Run database migrations: <br>
+```sh
 -python manage.py migrate <br>
--Create a superuser for admin access: <br>
--python manage.py createsuperuser <br>
+```
+ Create a superuser for admin access: <br>
+ ```sh
+ python manage.py createsuperuser
+ ```
 -Collect static files: <br>
--python manage.py collectstatic <br>
--Start the development server: <br>
--python manage.py runserver <br>
+```sh
+ python manage.py collectstatic <br>
+ ```
+ Start the development server: <br>
+ ```sh
+  python manage.py runserver <br>
+``
 
 ---
 <h3>
@@ -91,30 +102,7 @@ Modify authentication and permission settings in settings.py according to your n
 
 ---
 
-About <br>
--No description, website, or topics provided. <br>
--Resources<br>
--Readme<br>
--Activity <br>
--Custom properties <br>
--Stars <br>
--0 stars <br>
--Watchers <br>
--0 watching <br>
--Forks <br>
--0 forks <br>
--Releases <br>
--No releases published <br>
--Create a new release <br>
--Packages <br>
--No packages published <br>
--Publish your first package <br>
-<h3>
-**Contributors**</h3>
-<br>
- 6
 
----
 <h3>
  Languages <br>
 </h3>
@@ -123,8 +111,6 @@ Python <br>
 
 Procfile <br>
 0.3% <br>
-
-
 ---
 
 <p align="center">
