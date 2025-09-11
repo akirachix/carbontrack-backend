@@ -12,9 +12,9 @@ Overview<br>
 Carbon Track is system that leverages IoT sensors to continuously collect emissions and energy usage data across multiple factory. The project features a Django REST Framework backend API with endpoints for user energy entry, emissions, compliance, factory, and MCU devices. Interactive API documentation is provided via Swagger and Redoc.
 
 ---
-
-**Features**<br>
-
+<h3>
+ Features   <br>
+</h3>
 *User registration, login, and authentication <br>
 *CRUD operations on energy entry, emissions, compliance, factory, and MCU devices <br>
 *API documentation with Swagger UI and Redoc <br>
@@ -22,8 +22,9 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 *Secure endpoints with configurable authentication and permissions <br>
 
 ---
-
-**Technology Stack** <br>
+<h3>
+ Technology Stack <br>
+</h3>
 <lu>
 -Python 3.13+ <br>
 -Django 4.2+ <br>
@@ -39,15 +40,17 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 -Database <br>
 
 ---
-
-**Installation** <br>
+<h3>
+ Installation<br>
+</h3>
 Clone this repository: <br>
 git clone https://github.com/akirachix/carbontrack-backend.git <br>
 cd carbontrack <br>
 
 ---
-
-**Create and activate a virtual environment:** <br>
+<h3>
+  Create and activate a virtual environment: <br>
+</h3>
 -Linux/macOS: <br>
 -python -m venv venv <br>
 -source venv/bin/activate <br>
@@ -56,8 +59,9 @@ cd carbontrack <br>
 -venv\Scripts\activate <br>
 
 ---
-
-**Install dependencies:** <br>
+<h3>
+  Install dependencies <br>
+</h3>
 -uv pip install -r requirements.txt <br>
 -Set environment variables and update settings.py <br>
 -Configure your database, secret keys, and static/media paths <br>
@@ -71,15 +75,17 @@ cd carbontrack <br>
 -python manage.py runserver <br>
 
 ---
-
-**API Documentation** <br>
+<h3>
+  API Documentation<br>
+</h3>
 Swagger UI:[Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/swagger-ui/) <br>
 Redoc: [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/redoc/) <br>
 Postman Documentation: [Link](https://documenter.getpostman.com/view/45609889/2sB3HooJrj)
 
 ---
-
-**Usage** <br>
+<h3>
+  Usage <br>
+</h3>
 Access API root at [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/) to explore available endpoints.
 Use /register/, /login/, and other API endpoints for user authentication and resource management.
 Modify authentication and permission settings in settings.py according to your needs.
@@ -104,13 +110,15 @@ About <br>
 -Packages <br>
 -No packages published <br>
 -Publish your first package <br>
-
-**Contributors** <br>
+<h3>
+**Contributors**</h3>
+<br>
  6
 
 ---
-
-**Languages** <br>
+<h3>
+ Languages <br>
+</h3>
 Python <br>
 99.7% <br>
 
