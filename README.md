@@ -78,39 +78,41 @@ Modify authentication and permission settings in settings.py according to your n
 
 ---
 
-About
---No description, website, or topics provided.
---Resources
---Readme
---Activity
---Custom properties
---Stars
---0 stars
---Watchers
---0 watching
---Forks
---0 forks
---Releases
---No releases published
---Create a new release
---Packages
---No packages published
---Publish your first package
---Contributors
+About <br>
+--No description, website, or topics provided. <br>
+--Resources<br>
+--Readme<br>
+--Activity <br>
+--Custom properties <br>
+--Stars <br>
+--0 stars <br>
+--Watchers <br>
+--0 watching <br>
+--Forks <br>
+--0 forks <br>
+--Releases <br>
+--No releases published <br>
+--Create a new release <br>
+--Packages <br>
+--No packages published <br>
+--Publish your first package <br>
+--Contributors <br>
 --6
 
 ---
 
-**Languages**
-Python
-99.7%
+**Languages** <br>
+Python <br>
+99.7% <br>
 
+Procfile<br> 
+0.3% <br>
 ---
- 
-Procfile
-0.3%
-Footer
-© 2025 GitHub, Inc.
+
+<p align="center">
+ © 2025 GitHub, Inc.
+</p>
+
 
 
 
