@@ -6,7 +6,7 @@
 <h3>
  Overview
 </h3>
-<br>
+<br> ```sh
 Carbon Track is system that leverages IoT sensors to continuously collect emissions and energy usage data across multiple factory. The project features a Django REST Framework backend API with endpoints for user energy entry, emissions, compliance, factory, and MCU devices. Interactive API documentation is provided via Swagger and Redoc.
 
 ---
@@ -66,23 +66,23 @@ cd carbontrack <br>
  uv pip install -r requirements.txt 
  ```
  Set environment variables and update settings.py <br>
--Configure your database, secret keys, and static/media paths <br>
--Run database migrations: <br>
+ Configure your database, secret keys, and static/media paths <br>
+ Run database migrations: <br>
 
 ```sh
 python manage.py migrate 
 ```
  Create a superuser for admin access: <br>
  ```sh
- python manage.py createsuperuser
+python manage.py createsuperuser
  ```
 -Collect static files: <br>
 ```sh
- python manage.py collectstatic 
+python manage.py collectstatic 
  ```
  Start the development server: <br>
  ```sh
-  python manage.py runserver 
+python manage.py runserver 
 ```
 
 ---
