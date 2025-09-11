@@ -8,7 +8,7 @@ Carbon Track is system that leverages IoT sensors to continuously collect emissi
 ---
 
 **Features**<br>
-*User registration, login, and authentication <br>---
+*User registration, login, and authentication <br>
 *CRUD operations on energy entry, emissions, compliance, factory, and MCU devices <br>
 *API documentation with Swagger UI and Redoc <br>
 *Modular architecture for easy extension and maintenance <br>
@@ -65,14 +65,14 @@ cd carbontrack <br>
 ---
 
 **API Documentation** <br>
-Swagger UI:[!Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/swagger-ui/) <br>
-Redoc: https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/redoc/ <br>
-Postman Documentation: https://documenter.getpostman.com/view/45609889/2sB3HooJrj
+Swagger UI:[Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/swagger-ui/) <br>
+Redoc: [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/schema/redoc/) <br>
+Postman Documentation: [Link](https://documenter.getpostman.com/view/45609889/2sB3HooJrj)
 
 ---
 
 **Usage** <br>
-Access API root at https://carbon-track-680e7cff8d27.herokuapp.com/api/ to explore available endpoints.
+Access API root at [Link](https://carbon-track-680e7cff8d27.herokuapp.com/api/) to explore available endpoints.
 Use /register/, /login/, and other API endpoints for user authentication and resource management.
 Modify authentication and permission settings in settings.py according to your needs.
 
