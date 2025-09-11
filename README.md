@@ -49,6 +49,7 @@ cd carbontrack <br>
 <h3>
   Create and activate a virtual environment: <br>
 </h3>
+
 *  Linux/macOS: <br>
 *  python -m venv venv <br>
 *  source venv/bin/activate <br>
@@ -69,7 +70,7 @@ cd carbontrack <br>
 -Run database migrations: <br>
 
 ```sh
--python manage.py migrate 
+python manage.py migrate 
 ```
  Create a superuser for admin access: <br>
  ```sh
