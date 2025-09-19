@@ -137,7 +137,7 @@ class ForgotPasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError("User with this email does not exist.")
         otp = random.randint(1000, 9999)
         cache.set(f"otp_{user.id}", otp, timeout=600)
-        return value
+        return value 
 
         
 class VerifyCodeSerializer(serializers.Serializer):
@@ -157,11 +157,6 @@ class VerifyCodeSerializer(serializers.Serializer):
 class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True, min_length=8)
-    confirm_password = serializers.CharField(write_only=True, min_length=8)
-    def validate(self, data):
-        if data["password"] != data["confirm_password"]:
-            raise serializers.ValidationError("Passwords do not match")
-        return data
     def save(self, **kwargs):
         user = User.objects.get(email=self.validated_data["email"])
         user.set_password(self.validated_data["password"])

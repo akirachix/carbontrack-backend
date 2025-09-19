@@ -13,6 +13,8 @@ import random
 from django.conf import settings
 from django.core.cache import cache
 from .serializers import (UserSerializer, SignupSerializer, LoginSerializer, ForgotPasswordSerializer, ResetPasswordSerializer, VerifyCodeSerializer)
+from django.shortcuts import render
+from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import AccessToken
 from django.contrib.auth import authenticate
@@ -20,8 +22,6 @@ from django.core.mail import send_mail
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-
-
 
 class EmissionsViewSet(viewsets.ModelViewSet):
     queryset = Emissions.objects.all().order_by('-updated_at') 
@@ -61,16 +61,10 @@ class ComplianceViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(compliance)
         return Response(serializer.data)
 
-
-
-
-
-
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [permissions.AllowAny]
 
 
 class SignupView(generics.CreateAPIView):
@@ -93,7 +87,7 @@ class LoginView(generics.GenericAPIView):
                 "first_name": user.first_name,
                 "last_name": user.last_name,
                 "user_type": user.user_type,
-               
+                "factory": user.factory.id if user.factory else None,
             }
         })
 
