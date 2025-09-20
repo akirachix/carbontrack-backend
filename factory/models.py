@@ -37,9 +37,9 @@ class EnergyEntry(models.Model):
     data_id = models.AutoField(primary_key=True)
     factory = models.ForeignKey(Factory, on_delete=models.CASCADE)
     energy_type = models.CharField(max_length=100, choices=ENERGY_TYPE_CHOICES)
-    energy_amount = models.DecimalField(max_digits=20, decimal_places=4)
-    co2_equivalent = models.DecimalField(max_digits=10, decimal_places=4, blank=True, null=True, editable=False)
-    tea_processed_amount = models.DecimalField(max_digits=10, decimal_places=4)
+    energy_amount = models.DecimalField(max_digits=30, decimal_places=4)
+    co2_equivalent = models.DecimalField(max_digits=30, decimal_places=6, blank=True, null=True, editable=False)
+    tea_processed_amount = models.DecimalField(max_digits=30, decimal_places=4)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
