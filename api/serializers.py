@@ -69,6 +69,7 @@ class ComplianceSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
+    user_type = serializers.CharField(required = False)
     class Meta:
         model = User
         fields =  [

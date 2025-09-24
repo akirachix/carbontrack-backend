@@ -87,7 +87,7 @@ class LoginView(generics.GenericAPIView):
                 "first_name": user.first_name,
                 "last_name": user.last_name,
                 "user_type": user.user_type,
-                "factory": user.factory.id if user.factory else None,
+                "factory": user.factory_id if user.factory else None,
             }
         })
 
