@@ -23,7 +23,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1', 'yes']
 load_dotenv()
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-insecure-key-for-dev-only')
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
