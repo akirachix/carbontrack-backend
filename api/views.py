@@ -66,6 +66,18 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
 
+    def partial_update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        
+        if 'password' in serializer.validated_data:
+            password = serializer.validated_data.pop('password')
+            instance.set_password(password)
+        self.perform_update(serializer)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 
 class SignupView(generics.CreateAPIView):
     serializer_class = SignupSerializer
